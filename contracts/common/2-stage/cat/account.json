@@ -1,50 +1,50 @@
 {
-    "$schema": "../../../../../MasterSchema/hydr8.contract.json",
-    "id": {
-        "entity": "account",
-        "authorSystem": "cat1",
-        "layer": "Stage",
-        "version": 1
+  "$schema": "../../../../../MasterSchema/hydr8.contract.json",
+  "id": {
+    "entity": "account",
+    "authorSystem": "cat1",
+    "layer": "Stage",
+    "version": 1
+  },
+  "additionalMetadata": {
+    "sourceSystem": "SQL",
+    "entityGroup": "CIMS",
+    "area": "Commons"
+  },
+  "processGroup": "PG-CAT1",
+  "processType": "Databricks",
+  "processSubType": "notebooks/Custom/Merge",
+  "sensitivity": "Yellow",
+  "processConfig": {},
+  "selfDependencyType": "onSuccess",
+  "optimisation": {
+    "optimisationType": "none"
+  },
+  "primaryKeyColumns": [
+    "ID"
+  ],
+  "changeTrackingColumns": [
+    "CKID"
+  ],
+  "transforms": [
+    {
+      "id": "drop_columns",
+      "name": "Drop audit column",
+      "args": {
+        "columns": [
+          "ingest"
+        ]
+      }
     },
-    "additionalMetadata": {
-        "sourceSystem": "SQL",
-        "entityGroup": "CIMS",
-        "area": "Common"
-    },
-    "processGroup": "PG-CAT1",
-    "processType": "Databricks",
-    "processSubType": "notebooks/Custom/Merge",
-    "sensitivity": "Yellow",
-    "processConfig": {},
-    "selfDependencyType": "onSuccess",
-    "optimisation": {
-        "optimisationType": "none"
-    },
-    "primaryKeyColumns": [
-        "ID"
-    ],
-    "changeTrackingColumns": [
-        "CKID"
-    ],
-    "transforms": [
-        {
-            "id": "drop_columns",
-            "name": "Drop audit column",
-            "args": {
-                "columns": [
-                    "ingest"
-                ]
-            }
-        },
-        {
-            "id": "deduplicate_on_primary_key",
-            "name": "Dedupe on Primary key for source for merge",
-            "args": {
-                "primary_key_columns": [
-                    "ID"
-                ],
-                "order_column": "_IngestedDate"
-            }
-        }
-    ]
+    {
+      "id": "deduplicate_on_primary_key",
+      "name": "Dedupe on Primary key for source for merge",
+      "args": {
+        "primary_key_columns": [
+          "ID"
+        ],
+        "order_column": "_IngestedDate"
+      }
+    }
+  ]
 }

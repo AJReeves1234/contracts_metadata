@@ -3,7 +3,7 @@
   "id": {
     "entity": "user",
     "authorSystem": "cat1",
-    "layer": "Raw",
+    "layer": "Landing",
     "version": 1
   },
   "additionalMetadata": {
@@ -12,14 +12,22 @@
     "area": "Common"
   },
   "processGroup": "PG-CAT1",
-  "processType": "Databricks",
-  "processSubType": "notebooks/custom/Append",
+  "processType": "ADF",
+  "processSubType": "SQLServer",
   "sensitivity": "Yellow",
   "processConfig": {
-    "fileFormat": "CSV",
-    "dfReadConfig": {
-      "cloudFiles.schemaEvolutionMode": "none"
-    }
+    "blobEndpointURLSecretName": "blob-endpoint-url",
+    "sqlConnectionStringSecretName": "connection-string",
+    "watermarkConnectionStringSecretName": "aad-connection-string",
+    "sourceQuery": "SELECT * FROM Account WHERE RecordDate > '{{watermark_RecordDate}}'",
+    "watermarks": [
+      {
+        "watermarkQuery": "SELECT MAX(RecordDate) FROM CIMS.dbo.Account",
+        "columnName": "RecordDate",
+        "defaultValue": "2000-01-01T00:00:00.000Z"
+      }
+    ],
+    "fileFormat": "CSV"
   },
   "selfDependencyType": "none",
   "optimisation": {
@@ -30,6 +38,5 @@
   ],
   "changeTrackingColumns": [
     "CKID"
-  ],
-  "schemaId": "schema_account_raw"
+  ]
 }

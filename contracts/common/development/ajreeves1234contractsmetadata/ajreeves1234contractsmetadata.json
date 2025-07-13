@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../../../MasterSchema/hydr8.contract.json",
+  "id": {
+    "entity": "user",
+    "authorSystem": "cat1",
+    "layer": "Landing",
+    "version": 1
+  },
+  "additionalMetadata": {
+    "sourceSystem": "SQL",
+    "entityGroup": "CIMS",
+    "area": "Common"
+  },
+  "processGroup": "PG-CAT1",
+  "processType": "ADF",
+  "processSubType": "SQLServer",
+  "sensitivity": "Yellow",
+  "processConfig": {
+    "blobEndpointURLSecretName": "blob-endpoint-url",
+    "sqlConnectionStringSecretName": "connection-string",
+    "watermarkConnectionStringSecretName": "aad-connection-string",
+    "sourceQuery": "SELECT * FROM Account WHERE RecordDate > '{{watermark_RecordDate}}'",
+    "watermarks": [
+      {
+        "watermarkQuery": "SELECT MAX(RecordDate) FROM CIMS.dbo.Account",
+        "columnName": "RecordDate",
+        "defaultValue": "2000-01-01T00:00:00.000Z"
+      }
+    ],
+    "fileFormat": "CSV"
+  },
+  "selfDependencyType": "none",
+  "optimisation": {
+    "optimisationType": "none"
+  },
+  "primaryKeyColumns": [
+    "ID"
+  ],
+  "changeTrackingColumns": [
+    "CKID"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "new-contract-1752427208705",
+  "name": "new-contract-session2",
+  "version": "1.0.0",
+  "description": "A new data contract",
+  "owner": "AJReeves1234",
+  "repository": "AJReeves1234/contracts_metadata",
+  "path": "contracts/new-contract-1752427208705.json",
+  "dependencies": [],
+  "dependents": [],
+  "status": "draft",
+  "lastUpdated": "2025-07-13T17:20:54.141Z",
+  "tags": [
+    "new"
+  ],
+  "schema": {}
+}

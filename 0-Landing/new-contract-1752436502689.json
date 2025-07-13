@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../../MasterSchema/hydr8.contract.json",
+  "id": {
+    "entity": "newcontract1752436502689",
+    "authorSystem": "system",
+    "layer": "Landing",
+    "version": 1
+  },
+  "additionalMetadata": {
+    "sourceSystem": "SQL",
+    "entityGroup": "SYSTEM",
+    "area": "Common"
+  },
+  "processGroup": "PG-SYSTEM",
+  "processType": "ADF",
+  "processSubType": "SQLServer",
+  "sensitivity": "Yellow",
+  "processConfig": {
+    "fileFormat": "CSV"
+  },
+  "selfDependencyType": "none",
+  "optimisation": {
+    "optimisationType": "none"
+  },
+  "primaryKeyColumns": [
+    "ID"
+  ],
+  "changeTrackingColumns": [
+    "CKID"
+  ]
+}

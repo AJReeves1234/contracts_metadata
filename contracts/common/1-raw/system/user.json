@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../../../MasterSchema/hydr8.contract.json",
+  "contractId": {
+    "entity": "user",
+    "authorSystem": "system",
+    "layer": "Raw",
+    "version": 1
+  },
+  "additionalMetadata": {
+    "sourceSystem": "api",
+    "entityGroup": "CIMS",
+    "area": "Common"
+  },
+  "processGroup": "PG-CAT2",
+  "processType": "Databricks",
+  "processSubType": "notebooks/custom/Append",
+  "sensitivity": "Yellow",
+  "processConfig": {
+    "fileFormat": "CSV",
+    "dfReadConfig": {
+      "cloudFiles.schemaEvolutionMode": "none"
+    }
+  },
+  "selfDependencyType": "onSuccess",
+  "optimisation": {
+    "optimisationType": "none"
+  },
+  "primaryKeyColumns": [
+    "ID"
+  ],
+  "changeTrackingColumns": [
+    "CKID"
+  ],
+  "schemaId": "schema_account_raw",
+  "dependencies": [
+    "user_Landing_1"
+  ]
+}
